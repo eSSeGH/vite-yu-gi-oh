@@ -1,7 +1,11 @@
 <script>
 import axios from 'axios';
+import MainCard from './MainCard.vue';
 
 export default {
+    components: {
+        MainCard,
+    },
     data() {
         return {
             gameCards: [],
@@ -36,19 +40,9 @@ export default {
 
         <div class="container">
 
-            <div v-for="(el, i) in gameCards" :key="i" class="col">
+            <MainCard v-for="(el, i) in gameCards" :key="i" :card="el" class="col">
 
-                <div class="card">
-
-                    <img :src="gameCards[i].card_images[0].image_url" alt="">
-
-                    <h3>{{ gameCards[i].name }}</h3>
-
-                    <span>{{ gameCards[i].archetype }}</span>
-
-                </div>
-
-            </div>
+            </MainCard>
 
         </div>
 
