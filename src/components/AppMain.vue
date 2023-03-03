@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import MainCard from './MainCard.vue';
+import store from '../store'
 
 export default {
     components: {
@@ -8,7 +9,7 @@ export default {
     },
     data() {
         return {
-            gameCards: [],
+            store,
         }
     },
     methods: {
@@ -22,10 +23,8 @@ export default {
                     console.log(res.data.data)
                     console.log(res.data.data[0].name)
 
-                    const fetchData = res.data.data
-
-                    this.gameCards = fetchData
-                    console.log(this.gameCards)
+                    this.store.gameCards = res.data.data
+                    console.log(this.store.gameCards)
                 })
         }
     },
@@ -40,7 +39,7 @@ export default {
 
         <div class="container">
 
-            <MainCard v-for="(el, i) in gameCards" :key="i" :card="el" class="col">
+            <MainCard v-for="(card, i) in store.gameCards" :key="i" class="col" :card="card">
 
             </MainCard>
 
