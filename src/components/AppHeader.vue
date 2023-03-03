@@ -17,15 +17,14 @@ export default {
 </template>
 
 <style lang='scss' scoped>
-@use './general.scss' as *;
+@use '../style/general.scss' as *;
 
 header {
     justify-content: center;
     height: 120px;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: coral;
 
     h1 {
-        color: coral;
         font-size: 3rem;
     }
 }
