@@ -19,7 +19,7 @@ export default {
             console.log("fetching...", this.store.search)
             this.store.error = false
 
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
                 params: {
                     fname: this.store.search,
                 }
