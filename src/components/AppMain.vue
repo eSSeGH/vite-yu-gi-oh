@@ -17,6 +17,7 @@ export default {
     methods: {
         fetchGameCard() {
             console.log("fetching...", this.store.search)
+            this.store.error = false
 
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
                 params: {
@@ -106,6 +107,7 @@ main {
 
         .col {
             width: calc(100%/5 - 15px*4/5);
+            height: 400px;
         }
     }
 }

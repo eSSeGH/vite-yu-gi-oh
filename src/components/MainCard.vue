@@ -31,7 +31,7 @@ export default {
     flex-direction: column;
     gap: 20px;
     background-color: coral;
-    height: 100%;
+    height: 400px;
 
     h3 {
         color: black;
