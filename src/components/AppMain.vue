@@ -16,8 +16,7 @@ export default {
     },
     methods: {
         fetchGameCard() {
-            console.log("fetching...")
-            console.log(this.store.search)
+            console.log("fetching...", this.store.search)
 
             axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {
                 params: {
@@ -26,11 +25,11 @@ export default {
             })
                 .then((res) => {
                     this.store.gameCards = res.data.data
-                    console.log(this.store.gameCards)
                 })
                 .catch((error) => {
                     console.log(error)
                     this.store.gameCards = []
+                    this.store.error = true
                     console.log('error detected', gameCards)
                 })
         }
@@ -54,8 +53,8 @@ export default {
             <span>Nome: {{ store.search }}</span>
 
         </div>
-        <div class="error-info">
-            La ricerca non ha prodotto risultati
+        <div class="error-info" v-if="store.error === true">
+            La ricerca non ha prodotto risultati: error 400
         </div>
 
         <!-- show game cards section -->
