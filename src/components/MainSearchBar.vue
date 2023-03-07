@@ -18,13 +18,26 @@ export default {
 
         <h2>FILTRA RISULTATI</h2>
 
-        <div class="container">
+        <div class="container flex-center">
 
+            <!-- uantity filter select -->
+            <div class="card-uantity-filter">
+                <label for="uantity">quantità di carte visualizzate:</label>
+                <select class="uantity" v-model="store.numOfEl">
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+            <!-- name filter text input -->
             <div class="name-filter">
                 <label for="search">Nome:</label>
-                <input class="search" v-model="store.search" @keyup.enter="$emit('onSearch')" type="text"
+                <input @keyup.enter="$emit('onSearch')" class="search" v-model="store.search" type="text"
                     placeholder="Filtra per nome">
             </div>
+
+            <button @click="$emit('onSearch')">Filtra</button>
 
         </div>
 
@@ -45,8 +58,10 @@ export default {
     }
 
     .container {
+        justify-content: space-around;
 
-        .name-filter {
+        .name-filter,
+        .card-uantity-filter {
             display: flex;
             flex-direction: column;
 
@@ -61,6 +76,17 @@ export default {
             }
         }
 
+        button {
+            padding: 5px 10px;
+            background-color: coral;
+            border-radius: 5px;
+            border: none;
+            align-self: flex-end;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
     }
 }
 </style>
